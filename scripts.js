@@ -1,6 +1,7 @@
 const newDie = document.getElementById('new');
 const reroll = document.getElementById('reroll');
 const sum = document.getElementById('sum');
+let showSum = document.getElementById('show-sum');
 const section = document.getElementById('roll-section');
 let num
 let diceArray = [];
@@ -29,11 +30,13 @@ class Die {
 
 // add die on button click
 newDie.addEventListener("click", function () {
+    showSum.innerHTML = null;
     new Die();
 })
 
 // reroll on button click
 reroll.addEventListener("click", function () {
+    showSum.innerHTML = null;
     diceArray.forEach(element => {
         element.textContent = null;
         num = Math.ceil(Math.random() * 6);
@@ -46,11 +49,13 @@ reroll.addEventListener("click", function () {
 //sum dice values on button click
 sum.addEventListener('click', function () {
     let diceValArray = [];
+    showSum.innerHTML = null;
     diceArray.forEach(element => {
         let diceVal = parseInt(element.innerHTML);
         diceValArray.push(diceVal);
     })
     const add = arr => arr.reduce((a, b) => a + b, 0);
     let sumDice = add(diceValArray);
-    console.log(sumDice);
+    diceTotal = document.createTextNode(sumDice);
+    showSum.appendChild(diceTotal);
 })
