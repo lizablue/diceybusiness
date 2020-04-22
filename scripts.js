@@ -24,15 +24,16 @@ class Die {
     roll() {
         num = Math.ceil(Math.random() * 6);
     }
+
 }
 
 // add die on button click
-newDie.addEventListener("click", function() {
+newDie.addEventListener("click", function () {
     new Die();
 })
 
 // reroll on button click
-reroll.addEventListener("click", function() {
+reroll.addEventListener("click", function () {
     diceArray.forEach(element => {
         element.textContent = null;
         num = Math.ceil(Math.random() * 6);
@@ -43,10 +44,13 @@ reroll.addEventListener("click", function() {
 })
 
 //sum dice values on button click
-sum.addEventListener('click', function() {
+sum.addEventListener('click', function () {
+    let diceValArray = [];
     diceArray.forEach(element => {
-        let diceVal = element.innerHTML;
-        let diceValArray = Array.from(diceVal);
-        console.log(diceVal);
+        let diceVal = parseInt(element.innerHTML);
+        diceValArray.push(diceVal);
     })
+    const add = arr => arr.reduce((a, b) => a + b, 0);
+    let sumDice = add(diceValArray);
+    console.log(sumDice);
 })
