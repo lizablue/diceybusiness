@@ -5,6 +5,8 @@ let showSum = document.getElementById('show-sum');
 const section = document.getElementById('roll-section');
 let num
 let diceArray = [];
+let dieVal
+let newVal
 
 class Die {
     constructor() {
@@ -13,6 +15,8 @@ class Die {
         this.value = document.createTextNode(num);
         this.div.className = ('dice');
         this.render();
+        this.div.addEventListener("click", () => this.reroll());
+        
     }
 
     render() {
@@ -25,6 +29,17 @@ class Die {
     roll() {
         num = Math.ceil(Math.random() * 6);
     }
+
+    reroll() {
+        showSum.innerHTML = null;
+        this.div.textContent = null;
+        num = Math.ceil(Math.random() * 6);
+        dieVal = document.createTextNode(num);
+        newVal = this.div.appendChild(dieVal);
+        this.div.id = num;
+    }
+
+
 
 }
 
@@ -56,6 +71,6 @@ sum.addEventListener('click', function () {
     })
     const add = arr => arr.reduce((a, b) => a + b, 0);
     let sumDice = add(diceValArray);
-    diceTotal = document.createTextNode(sumDice);
+    diceTotal = document.createTextNode(`Total = ${sumDice}`);
     showSum.appendChild(diceTotal);
 })

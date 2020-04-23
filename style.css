@@ -13,11 +13,25 @@ section > div {
     border-style: solid;
     border-width: 3px;
     line-height: 100px;
-    display: flex-row;
 }
 
-section > button {
+button {
     border-style: solid;
     border-width: 2px;
     border-color: black;
+    margin: 10px;
+}
+
+#show-sum {
+    font-size: 30px;
+    padding: 10px;
+    font-family: Impact, Charcoal, sans-serif;
+    justify-content: right;
+}
+
+.visible {
+    visibility: visible !important;
+}
+.invisible {
+    visibility: hidden !important;
 }
