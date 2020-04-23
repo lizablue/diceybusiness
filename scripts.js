@@ -16,7 +16,7 @@ class Die {
         this.div.className = ('dice');
         this.render();
         this.div.addEventListener("click", () => this.reroll());
-        
+        this.div.addEventListener("dblclick", () => this.remove());
     }
 
     render() {
@@ -39,7 +39,11 @@ class Die {
         this.div.id = num;
     }
 
-
+    remove() {
+        section.removeChild(this.div);
+        let divIndex = diceArray.indexOf(this.div);
+        diceArray.splice(divIndex, 1);
+    }
 
 }
 
