@@ -7,7 +7,6 @@ section > div {
     vertical-align: middle;
     font-size: 80px;
     font-family: Impact, Charcoal, sans-serif;
-    opacity: .8;
     border-radius: 15%;
     border-color: black;
     border-style: solid;
@@ -16,9 +15,8 @@ section > div {
 }
 
 button {
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
+    background-color: black;
+    color: white;
     margin: 10px;
 }
 
@@ -26,7 +24,7 @@ button {
     font-size: 30px;
     padding: 10px;
     font-family: Impact, Charcoal, sans-serif;
-    justify-content: right;
+    color: black;
 }
 
 .visible {

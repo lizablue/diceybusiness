@@ -1,12 +1,20 @@
 const newDie = document.getElementById('new');
 const reroll = document.getElementById('reroll');
 const sum = document.getElementById('sum');
+const diceChar = document.getElementById('dice-char');
 let showSum = document.getElementById('show-sum');
 const section = document.getElementById('roll-section');
 let num
 let diceArray = [];
-let dieVal
-let newVal
+
+function swapText() {
+    let btnText = document.getElementById("dice-char");
+    if (btnText.innerHTML === "dice!") {
+        btnText.innerHTML = "no dice!";
+    } else {
+        btnText.innerHTML = "dice!";
+    }
+}
 
 class Die {
     constructor() {
@@ -34,8 +42,8 @@ class Die {
         showSum.innerHTML = null;
         this.div.textContent = null;
         num = Math.ceil(Math.random() * 6);
-        dieVal = document.createTextNode(num);
-        newVal = this.div.appendChild(dieVal);
+        let dieVal = document.createTextNode(num);
+        this.div.appendChild(dieVal);
         this.div.id = num;
     }
 
@@ -60,7 +68,7 @@ reroll.addEventListener("click", function () {
         element.textContent = null;
         num = Math.ceil(Math.random() * 6);
         dieVal = document.createTextNode(num);
-        newVal = element.appendChild(dieVal);
+        element.appendChild(dieVal);
         element.id = num;
     });
 })
@@ -77,4 +85,22 @@ sum.addEventListener('click', function () {
     let sumDice = add(diceValArray);
     diceTotal = document.createTextNode(`Total = ${sumDice}`);
     showSum.appendChild(diceTotal);
+})
+
+diceChar.addEventListener('click', function () {
+    swapText();
+    let dice = document.getElementsByClassName('dice');
+    if (num === 1) {
+        dice.innerHTML = '\u2680'
+    } else if (num === 2) {
+        dice.innerHTML = '\u2681'
+    } else if (num === 3) {
+        dice.innerHTML = '\u2682'
+    } else if (num === 4) {
+        dice.innerHTML = '\u2683'
+    } else if (num === 5) {
+        dice.innerHTML = '\u2684'
+    } else if (num === 6) {
+        dice.innerHTML = '\u2685'
+    }
 })
