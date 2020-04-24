@@ -89,18 +89,19 @@ sum.addEventListener('click', function () {
 
 diceChar.addEventListener('click', function () {
     swapText();
-    let dice = document.getElementsByClassName('dice');
-    if (num === 1) {
-        dice.innerHTML = '\u2680'
-    } else if (num === 2) {
-        dice.innerHTML = '\u2681'
-    } else if (num === 3) {
-        dice.innerHTML = '\u2682'
-    } else if (num === 4) {
-        dice.innerHTML = '\u2683'
-    } else if (num === 5) {
-        dice.innerHTML = '\u2684'
-    } else if (num === 6) {
-        dice.innerHTML = '\u2685'
-    }
-})
+    diceArray.forEach(element => {
+        if (element.innerHTML === '1') {
+            element.innerHTML = '\u2680';
+        } else if (element.innerHTML === '2') {
+            element.innerHTML = '\u2681';
+        } else if (element.innerHTML === '3') {
+            element.innerHTML = '\u2682';
+        } else if (element.innerHTML === '4') {
+            element.innerHTML = '\u2683';
+        } else if (element.innerHTML === '5') {
+            element.innerHTML = '\u2684';
+        } else if (element.innerHTML === '6') {
+            element.innerHTML = '\u2685';
+        }
+    });
+});
