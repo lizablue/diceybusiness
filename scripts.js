@@ -2,7 +2,7 @@ const newDie = document.getElementById('new');
 const reroll = document.getElementById('reroll');
 const sum = document.getElementById('sum');
 const diceChar = document.getElementById('dice-char');
-let showSum = document.getElementById('show-sum');
+const showSum = document.getElementById('show-sum');
 const section = document.getElementById('roll-section');
 let num
 let diceArray = [];
@@ -36,7 +36,7 @@ function dieFace() {
     });
 }
 
-function dieNum() {
+function numDie() {
     diceArray.forEach(element => {
         element.style.border = 'solid 3px';
         if (element.innerHTML === '\u2680') {
@@ -99,7 +99,7 @@ newDie.addEventListener("click", function () {
     showSum.innerHTML = null;
     if (count % 2 === 0 || count === 0) {
         new Die();
-        dieNum();
+        numDie();
     } else {
         new Die();
         dieFace();
@@ -116,6 +116,11 @@ reroll.addEventListener("click", function () {
         element.appendChild(dieVal);
         element.id = num;
     });
+    if (count % 2 === 0 || count === 0) {
+        numDie();
+    } else {
+        dieFace();
+    }
 })
 
 //sum dice values on button click
@@ -126,6 +131,11 @@ sum.addEventListener('click', function () {
         let diceVal = parseInt(element.innerHTML);
         diceValArray.push(diceVal);
     })
+    if (count % 2 === 0 || count === 0) {
+        numDie();
+    } else {
+        dieFace();
+    }
     const add = arr => arr.reduce((a, b) => a + b, 0);
     let sumDice = add(diceValArray);
     diceTotal = document.createTextNode(`Total = ${sumDice}`);
