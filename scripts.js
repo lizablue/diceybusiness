@@ -6,6 +6,7 @@ let showSum = document.getElementById('show-sum');
 const section = document.getElementById('roll-section');
 let num
 let diceArray = [];
+let count = 0;
 
 function swapText() {
     let btnText = document.getElementById("dice-char");
@@ -14,6 +15,25 @@ function swapText() {
     } else {
         btnText.innerHTML = "dice!";
     }
+}
+
+function dieFace() {
+    diceArray.forEach(element => {
+        element.style.border = 'none';
+        if (element.innerHTML === '1') {
+            element.innerHTML = '\u2680';
+        } else if (element.innerHTML === '2') {
+            element.innerHTML = '\u2681';
+        } else if (element.innerHTML === '3') {
+            element.innerHTML = '\u2682';
+        } else if (element.innerHTML === '4') {
+            element.innerHTML = '\u2683';
+        } else if (element.innerHTML === '5') {
+            element.innerHTML = '\u2684';
+        } else if (element.innerHTML === '6') {
+            element.innerHTML = '\u2685';
+        }
+    });
 }
 
 class Die {
@@ -58,7 +78,13 @@ class Die {
 // add die on button click
 newDie.addEventListener("click", function () {
     showSum.innerHTML = null;
-    new Die();
+    if (count % 2 === 0 || count === 0) {
+        new Die();
+    } else {
+        new Die();
+        dieFace();
+    }
+    
 })
 
 // reroll on button click
@@ -88,20 +114,7 @@ sum.addEventListener('click', function () {
 })
 
 diceChar.addEventListener('click', function () {
+    count++;
     swapText();
-    diceArray.forEach(element => {
-        if (element.innerHTML === '1') {
-            element.innerHTML = '\u2680';
-        } else if (element.innerHTML === '2') {
-            element.innerHTML = '\u2681';
-        } else if (element.innerHTML === '3') {
-            element.innerHTML = '\u2682';
-        } else if (element.innerHTML === '4') {
-            element.innerHTML = '\u2683';
-        } else if (element.innerHTML === '5') {
-            element.innerHTML = '\u2684';
-        } else if (element.innerHTML === '6') {
-            element.innerHTML = '\u2685';
-        }
-    });
+    dieFace();
 });
