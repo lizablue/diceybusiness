@@ -26,10 +26,3 @@ button {
     font-family: Impact, Charcoal, sans-serif;
     color: black;
 }
-
-.visible {
-    visibility: visible !important;
-}
-.invisible {
-    visibility: hidden !important;
-}

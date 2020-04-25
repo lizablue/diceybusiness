@@ -84,6 +84,11 @@ class Die {
         let dieVal = document.createTextNode(num);
         this.div.appendChild(dieVal);
         this.div.id = num;
+        if (count % 2 === 0 || count === 0) {
+            numDie();
+        } else {
+            dieFace();
+        }
     }
 
     remove() {
@@ -104,7 +109,7 @@ newDie.addEventListener("click", function () {
         new Die();
         dieFace();
     }
-})
+});
 
 // reroll on button click
 reroll.addEventListener("click", function () {
@@ -121,32 +126,27 @@ reroll.addEventListener("click", function () {
     } else {
         dieFace();
     }
-})
+});
 
 //sum dice values on button click
 sum.addEventListener('click', function () {
+    showSum.innerHTML = null;
     let diceValArray = [];
-    
     diceArray.forEach(element => {
-        let diceVal = parseInt(element.innerHTML);
+        let diceVal = parseInt(element.id);
         diceValArray.push(diceVal);
     })
-    if (count % 2 === 0 || count === 0) {
-        numDie();
-    } else {
-        dieFace();
-    }
     const add = arr => arr.reduce((a, b) => a + b, 0);
     let sumDice = add(diceValArray);
     diceTotal = document.createTextNode(`Total = ${sumDice}`);
     showSum.appendChild(diceTotal);
-})
+});
 
 diceChar.addEventListener('click', function () {
     count++;
-    // swapText();
+    swapText();
     if (count % 2 === 0 || count === 0) {
-        dieNum();
+        numDie();
     } else {
         dieFace();
     }
